@@ -11,13 +11,13 @@ public class ImageViewActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	
-		// Get the Intent used to start this Activity
+		// Получаем Интент, использованный для старта этой Активности
 		Intent intent = getIntent();
 		
-		// Make a new ImageView
+		// Создаем новый ImageView
 		ImageView imageView = new ImageView(getApplicationContext());
 		
-		// Get the ID of the image to display and set it as the image for this ImageView
+		// Получаем ID изображения для отображения и устанавливаем его в качестве изображения для компоненты ImageView
 		imageView.setImageResource(intent.getIntExtra(GridLayoutActivity.EXTRA_RES_ID, 0));
 		
 		setContentView(imageView);

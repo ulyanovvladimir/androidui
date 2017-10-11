@@ -29,22 +29,22 @@ public class GridLayoutActivity extends Activity {
 
 		GridView gridview = (GridView) findViewById(R.id.gridview);
 
-		// Create a new ImageAdapter and set it as the Adapter for this GridView
+		// Создаем новый ImageAdapter и задаем его в качестве адаптера для GridView
 		gridview.setAdapter(new ImageAdapter(this, mThumbIdsFlowers));
 
-		// Set an setOnItemClickListener on the GridView
+		// Добавляем setOnItemClickListener для GridView
 		gridview.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
 				
-				//Create an Intent to start the ImageViewActivity
+				//Создаем Интент для перехода к ImageViewActivity
 				Intent intent = new Intent(GridLayoutActivity.this,
 						ImageViewActivity.class);
 				
-				// Add the ID of the thumbnail to display as an Intent Extra
+				// Добавляем ID изображения для отображения с помощью Extra-поля Интента.
 				intent.putExtra(EXTRA_RES_ID, (int) id);
 				
-				// Start the ImageViewActivity
+				// Стартуем ImageViewActivity
 				startActivity(intent);
 			}
 		});

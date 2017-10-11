@@ -16,38 +16,38 @@ class ImageAdapter extends BaseAdapter {
 	private final Context mContext;
 	private final List<Integer> mThumbIds;
 
-	// Store the list of image IDs
+	// Сохраняем список идентификаторов (ID) изображений в конструкторе
 	public ImageAdapter(Context c, List<Integer> ids) {
 		mContext = c;
 		this.mThumbIds = ids;
 	}
 
-	// Return the number of items in the Adapter
+	// Возвращает количество элементов в адаптере
 	@Override
 	public int getCount() {
 		return mThumbIds.size();
 	}
 
-	// Return the data item at position
+	// Возващает элемент данных в указанной позиции (номер по порядку)
 	@Override
 	public Object getItem(int position) {
 		return mThumbIds.get(position);
 	}
 
-	// Will get called to provide the ID that
-	// is passed to OnItemClickListener.onItemClick()
+	// Будет вызван, чтобы предоставить ID для передачи
+	// в метод OnItemClickListener.onItemClick()
 	@Override
 	public long getItemId(int position) {
 		return mThumbIds.get(position);
 	}
 
-	// Return an ImageView for each item referenced by the Adapter
+	// Возвращает ImageView для каждого элемента, на который ссылается Adapter
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
 		ImageView imageView = (ImageView) convertView;
 
-		// if convertView's not recycled, initialize some attributes
+		// Если convertView не повторно используемый, создаем новый, инициализируем некоторые параметры
 		if (imageView == null) {
 			imageView = new ImageView(mContext);
 			imageView.setLayoutParams(new GridView.LayoutParams(WIDTH, HEIGHT));

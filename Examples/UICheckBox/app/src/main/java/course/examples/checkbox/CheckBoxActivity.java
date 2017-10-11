@@ -14,15 +14,15 @@ public class CheckBoxActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        // Get a reference to the CheckBox
+        // Получаем ссылку на CheckBox
         final CheckBox checkbox = (CheckBox) findViewById(R.id.checkbox);
 
-        // Set an OnClickListener on the CheckBox
+        // Устанавливаем OnClickListener для нашего объекта класса CheckBox
         checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                // Check whether CheckBox is currently checked
-                // Set CheckBox text accordingly
+                // Проверяем, выбран ли в настоящий момент CheckBox, установлена ли галка
+                // Устанавливаем значение текста для чекбокса соответствующим образом
                 if (isChecked) {
                     checkbox.setText(getString(R.string.im_checked));
                 } else {
@@ -31,14 +31,14 @@ public class CheckBoxActivity extends Activity {
             }
         });
 
-                // Get a reference to the Hide CheckBox Button
+		// Получаем ссылку на кнопку "Скрыть CheckBox"
         final Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                // Toggle the CheckBox's visibility state
-                // Set the Button text accordingly
+                // Переключаем состояние видимости CheckBox-а
+                // Устанавливаем соответствующий текст для кнопки
                 if (checkbox.isShown()) {
                     checkbox.setVisibility(View.INVISIBLE);
                     button.setText(getString(R.string.unhide_checkbox));
