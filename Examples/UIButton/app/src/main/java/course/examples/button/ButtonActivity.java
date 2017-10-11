@@ -13,18 +13,18 @@ public class ButtonActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
             
-        // Get a reference to the Press Me Button
+        // Получаем ссылку на кнопку "Press Me"
         final Button button = (Button) findViewById(R.id.button);
         
-        // Set an OnClickListener on this Button
-        // Called each time the user clicks the Button
+        // Устанавливаем OnClickListener на эту кнопку
+        // Вызывается каждый раз, когда пользователь нажимает на кнопку, объект класса Button
         button.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 
-				// Maintain a count of user presses
-				// Display count as text on the Button
-				button.setText("Got Pressed:" + ++count);
+				// Управляем количество нажатий пользователя
+				// Отображаем количество нажатий в виде текста на кнопке
+				button.setText("Количество нажатий:" + ++count);
 				
 			}
 		});
