@@ -1,4 +1,4 @@
-androidui
+Anroid UI
 =========
 
-Sample applications for Pearson Live Lessons - Developing User Interfaces for Android
+Примеры программ, демонстрирующих различные компоненты UI - Разработка приложений для мобильных устройств
