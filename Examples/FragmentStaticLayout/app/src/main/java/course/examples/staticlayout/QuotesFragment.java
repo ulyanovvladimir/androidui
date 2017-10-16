@@ -20,7 +20,7 @@ public class QuotesFragment extends Fragment {
         return mCurrIdx;
     }
 
-    // Show the Quote string at position newIndex
+    // Показывает цитату в указанной позиции
     public void showQuoteAtIndex(int newIndex) {
         if (newIndex < 0 || newIndex >= mQuoteArrayLen)
             return;
@@ -28,17 +28,17 @@ public class QuotesFragment extends Fragment {
         mQuoteView.setText(QuoteViewerActivity.sQuoteArray[mCurrIdx]);
     }
 
-    // Called to create the content view for this Fragment
+    // Вызывается для создания иерархии UI компонентов по этому Фрагменту
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Inflate the layout defined in quote_fragment.xml
-        // The last parameter is false because the returned view does not need to be attached to the container ViewGroup
+        // Наполняем фрагмент, в соответствии с макетом, определенным в quote_fragment.xml
+        // Последний параметр false, т.к. возвращает Компонент, который не требуется привязывать к корню контейнера ViewGroup
         return inflater.inflate(R.layout.quote_fragment, container, false);
     }
 
-    // Set up some information about the mQuoteView TextView
+    // Устанавливаем некоторую информацию для компоненты mQuoteView TextView
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

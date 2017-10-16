@@ -13,20 +13,20 @@ public class TitlesFragment extends ListFragment {
     @SuppressWarnings("unused")
     private static final String TAG = "TitlesFragment";
 
-    // Callback interface that allows this Fragment to notify the QuoteViewerActivity when
-    // user clicks on a List Item
+    // Интерфейс, который позволяет этому Фрагменту уведомить QuoteViewerActivity , когда
+    // пользователь выберет элемент Списка
     public interface ListSelectionListener {
         public void onListSelection(int index);
     }
 
-    // Called when the user selects an item from the List
+    // Вызывается, когда пользователь выбирает элемент из Списка
     @Override
     public void onListItemClick(ListView l, View v, int pos, long id) {
 
-        // Indicates the selected item has been checked
+        // Обозначает, что выбранный элемент установлен активным
         getListView().setItemChecked(pos, true);
 
-        // Inform the QuoteViewerActivity that the item in position pos has been selected
+        // Информируем QuoteViewerActivity, что был выбран элемент в позиции pos
         mListener.onListSelection(pos);
     }
 
@@ -35,7 +35,7 @@ public class TitlesFragment extends ListFragment {
         super.onAttach(activity);
         try {
 
-            // Set the ListSelectionListener for communicating with the QuoteViewerActivity
+            // Устанавливает ListSelectionListener для взаимодействия с QuoteViewerActivity
             mListener = (ListSelectionListener) activity;
 
         } catch (ClassCastException e) {
@@ -48,11 +48,11 @@ public class TitlesFragment extends ListFragment {
     public void onActivityCreated(Bundle savedState) {
         super.onActivityCreated(savedState);
 
-        // Set the list choice mode to allow only one selection at a time
+        // Устанавливает режим для списка вариантов (только один выделенный элемент)
         getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
-        // Set the list adapter for the ListView
-        // Discussed in more detail in the user interface classes lesson
+        // Устанавливаем адаптер списка для ListView
+        // Подробно обсуждалось в теме компонентов пользовательского интерфейса
         setListAdapter(new ArrayAdapter<>(getActivity(),
                 R.layout.title_item, QuoteViewerActivity.sTitleArray));
     }

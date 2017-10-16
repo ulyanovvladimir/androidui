@@ -19,23 +19,23 @@ public class QuoteViewerActivity extends Activity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Get the string arrays with the titles and quotes
+        // Получаем массивы строк для заглавий и цитат
         sTitleArray = getResources().getStringArray(R.array.Titles);
         sQuoteArray = getResources().getStringArray(R.array.Quotes);
 
         setContentView(R.layout.main);
 
-        // Get a reference to the QuotesFragment
+        // Получаем ссылку на QuotesFragment
         mDetailsFragment = (QuotesFragment) getFragmentManager()
                 .findFragmentById(R.id.details);
     }
 
-    // Called when the user selects an item in the TitlesFragment
+    // Вызывается, когда пользователь выбирает элемент во фрагменте TitlesFragment
     @Override
     public void onListSelection(int index) {
         if (mDetailsFragment.getShownIndex() != index) {
 
-            // Tell the QuoteFragment to show the quote string at position index
+            // Сообщаем фрагменту QuoteFragment, что нужно показать цитату в нужной позиции
             mDetailsFragment.showQuoteAtIndex(index);
         }
     }
