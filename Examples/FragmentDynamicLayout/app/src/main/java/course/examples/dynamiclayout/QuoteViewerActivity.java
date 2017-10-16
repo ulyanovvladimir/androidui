@@ -29,32 +29,32 @@ public class QuoteViewerActivity extends Activity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Get the string arrays with the titles and quotes
+        // Получить массивы строк для заголовков и цитат
         mTitleArray = getResources().getStringArray(R.array.Titles);
         mQuoteArray = getResources().getStringArray(R.array.Quotes);
 
         setContentView(R.layout.main);
 
-        // Get references to the TitleFragment and to the QuotesFragment
+        // Получаем указатели на TitleFragment и на QuotesFragment
         mTitleFrameLayout = (FrameLayout) findViewById(R.id.title_fragment_container);
         mQuotesFrameLayout = (FrameLayout) findViewById(R.id.quote_fragment_container);
 
 
-        // Get a reference to the FragmentManager
+        // Получаем ссылку на  FragmentManager
         mFragmentManager = getFragmentManager();
 
-        // Start a new FragmentTransaction
+        // Стартуем новую транзакцию FragmentTransaction
         FragmentTransaction fragmentTransaction = mFragmentManager
                 .beginTransaction();
 
-        // Add the TitleFragment to the layout
+        // Добавляем TitleFragment к макету
         fragmentTransaction.add(R.id.title_fragment_container,
                 new TitlesFragment());
 
-        // Commit the FragmentTransaction
+        // Сохраняем изменения FragmentTransaction, делаем commit.
         fragmentTransaction.commit();
 
-        // Add a OnBackStackChangedListener to reset the layout when the back stack changes
+        // Добавляем OnBackStackChangedListener для переустановки макета в момент изменения бэкстэка
         mFragmentManager
                 .addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
                     public void onBackStackChanged() {
@@ -65,54 +65,54 @@ public class QuoteViewerActivity extends Activity implements
 
     private void setLayout() {
 
-        // Determine whether the QuoteFragment has been added
+        // Определяем, был ли добавлен QuoteFragment
         if (!mQuoteFragment.isAdded()) {
 
-            // Make the TitleFragment occupy the entire layout
+            // Делаем так, чтобы TitleFragment занимал все пространство
             mTitleFrameLayout.setLayoutParams(
                     new LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT));
             mQuotesFrameLayout.setLayoutParams(
                     new LinearLayout.LayoutParams(0, MATCH_PARENT));
         } else {
 
-            // Make the TitleLayout take 1/3 of the layout's width
+            // Делаем так, чтобы TitleFragment занимал 1/3 от ширины макета
             mTitleFrameLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
                     MATCH_PARENT, 1f));
 
-            // Make the QuoteLayout take 2/3's of the layout's width
+            // Делаем так, чтобы QuoteFragment занимал 2/3 от ширины макета
             mQuotesFrameLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
                     MATCH_PARENT, 2f));
         }
     }
 
-    // Called when the user selects an item in the TitlesFragment
+    // Вызывается, когда пользователь выбирает элемент в TitlesFragment
     @Override
     public void onListSelection(int index) {
 
-        // If the QuoteFragment has not been added, add it now
+        // Если QuoteFragment не был добавлен, добавляем его
         if (!mQuoteFragment.isAdded()) {
 
-            // Start a new FragmentTransaction
+            // Стартуем новую транзакцию FragmentTransaction
             FragmentTransaction fragmentTransaction = mFragmentManager
                     .beginTransaction();
 
-            // Add the QuoteFragment to the layout
+            // Добавляем макет для QuoteFragment
             fragmentTransaction.add(R.id.quote_fragment_container,
                     mQuoteFragment);
 
-            // Add this FragmentTransaction to the back stack
+            // Добавляем эту транзакцию к бэкстэку
             fragmentTransaction.addToBackStack(null);
 
-            // Commit the FragmentTransaction
+            // Коммитим FragmentTransaction
             fragmentTransaction.commit();
 
-            // Force Android to execute the committed FragmentTransaction
+            // Заставляем Андроид запустить закоммиченную транзакцию FragmentTransaction
             mFragmentManager.executePendingTransactions();
         }
 
         if (mQuoteFragment.getShownIndex() != index) {
 
-            // Tell the QuoteFragment to show the quote string at position index
+            // Говорим QuoteFragment показать цитату в заданной позиции.
             mQuoteFragment.showQuoteAtIndex(index);
         }
     }
